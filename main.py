@@ -40,6 +40,7 @@ class test:
             data3.text:data4.text,
             data5.text:data6.text,
             data7.text:data8.text,
+            data7.text:data8.text,
         }
         print(my_dict)
 test()
