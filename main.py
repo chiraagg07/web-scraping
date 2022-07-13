@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import re
 class test:
     def __init__(self):
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
@@ -21,7 +22,7 @@ class test:
 
         self.driver.get("https://fdamfg.maharashtra.gov.in/frm_G_Cold_S_Query.aspx?ST=MH")
         license = self.driver.find_element(By.XPATH,'//*[@id="txtLicense"]')
-        license.send_keys('433220')
+        license.send_keys('188900')
         license = self.driver.find_element(By.NAME,'btnSearch').click()
         self.driver.implicitly_wait(10)
         data1 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[1]/td[1]')
@@ -34,13 +35,18 @@ class test:
         data8 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]/td[4]')
         data9 = 'hovertext'
         data10 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]')
-        print(data10.get_attribute('onmouseover'))
+        data = data10.get_attribute('onmouseover')
+        dd = data[174:-10]
+        dd1 = dd[:8]
+        dd2 = dd[15:47]
+        dd3 = dd[53:]
+        final = dd1 + dd2 + dd3
         my_dict = {
             data1.text:data2.text,
             data3.text:data4.text,
             data5.text:data6.text,
             data7.text:data8.text,
-            data7.text:data8.text,
+            data9:final
         }
         print(my_dict)
 test()
