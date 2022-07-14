@@ -36,21 +36,23 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
             data2 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]/td[1]')
             data3 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[1]/td[2]')
             data4 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]/td[2]')
-            data5 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[1]/td[3]')
-            data6 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]/td[3]')
-            data7 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[1]/td[4]')
-            data8 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]/td[4]')
+            data5 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[1]/td[4]')
+            data6 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]/td[4]')
+            dataa6 = data6.text
+            dataaa6 = dataa6[:24]
+            data7 = 'Register date'
+            data8 = dataa6[26:]
             data9 = 'hovertext'
             data10 = self.driver.find_element(By.XPATH,'//*[@id="dgDisplay"]/tbody/tr[2]')
-            data = data10.get_attribute('onmouseover')
-            dd = data[174:-10]
-            dataaa = dd.replace("<BR />","")
+            dataa10 = data10.get_attribute('onmouseover')
+            dataaa10 = dataa10[174:-10]
+            dataaaa10 = dataaa10.replace("<BR />","")
             my_dict = {
             data1.text:data2.text,
             data3.text:data4.text,
-            data5.text:data6.text,
-            data7.text:data8.text,
-            data9:dataaa
+            data5.text:dataaa6,
+            data7:data8,
+            data9:dataaaa10
         }
             self.send_response(200)
             self.send_header("Content-type", "application/json")
