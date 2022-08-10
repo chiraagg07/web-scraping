@@ -25,7 +25,7 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.options.add_argument('--disable-gpu')
             self.options.add_argument('--disable-dev-shm-usage')
             self.options.add_argument('--no-sandbox')
-            self.driver = webdriver.Chrome(executable_path="chromedriver.exe", options=self.options)
+            self.driver = webdriver.Chrome(executable_path="chromedriver", options=self.options)
 
             self.driver.get("https://fdamfg.maharashtra.gov.in/frm_G_Cold_S_Query.aspx?ST=MH")
             license1 = self.driver.find_element(By.XPATH,'//*[@id="txtLicense"]')
